@@ -18,6 +18,10 @@ public class CommandHandler {
         }
         String gameName = commandSplitted[2];
         String state = commandSplitted[3];
+        if (!(state.equals("PLAY") || state.equals("PAUSED") || state.equals("FINISHED"))) {
+            System.out.println("Invalid gamestate");
+            return;
+        }
         games.put(gameName, state);
         System.out.println("Set the game " + gameName + " to " + state);
     }

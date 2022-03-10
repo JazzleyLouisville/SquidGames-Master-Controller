@@ -12,7 +12,7 @@ public class CommandHandler {
 
     protected void setGameState(String command) {
         String[] commandSplitted = command.split(" ");
-        if (commandSplitted.length > 4) {
+        if (commandSplitted.length != 4) {
             System.out.println("Invalid command");
             return;
         }

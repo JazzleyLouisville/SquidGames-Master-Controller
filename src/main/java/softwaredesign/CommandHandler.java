@@ -13,6 +13,10 @@ public class CommandHandler {
     protected void setGameState(String command) {
         String[] commandSplitted = command.split(" ");
         if (commandSplitted.length != 4) {
+            if(commandSplitted[0].equals("EXIT") && commandSplitted.length == 1){
+                System.out.println("Exiting control room");
+                System.exit(0);
+            }
             System.out.println("Invalid command");
             return;
         }

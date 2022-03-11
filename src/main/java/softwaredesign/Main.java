@@ -14,6 +14,10 @@ public class Main {
                 commandHandler.setGameState(command);
             } else if(command.contains("GET GAMESTATE")) {
                 commandHandler.getGameState(command);
+            } else if(command.contains("SET GAMESEQUENCE")) {
+                commandHandler.setGameSequence(command);
+            }else if(command.contains("GET GAMESEQUENCE")) {
+                commandHandler.getGameSequence();
             } else if(command.contains("EXIT")) {
                 System.out.println("Exited the Squid Game Control Room");
                 break;

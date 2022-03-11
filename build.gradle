@@ -13,4 +13,8 @@ repositories {
 
 dependencies {
     testImplementation group: 'junit', name: 'junit', version: '4.13.1'
+    // https://mvnrepository.com/artifact/io.netty/netty-all
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.71.Final'
+    // https://mvnrepository.com/artifact/io.socket/socket.io-client
+    implementation group: 'io.socket', name: 'socket.io-client', version: '2.0.1'
 }

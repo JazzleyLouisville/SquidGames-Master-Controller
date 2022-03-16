@@ -1,10 +1,20 @@
 package softwaredesign;
 
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class Main {
-    public static void main (String[] args) {
+    public static void main (String[] args) throws Exception {
         CommandHandler commandHandler = new CommandHandler();
+        API api = new API();
         System.out.println("Welcome to the Squid Game Control Room");
         while (true) {
             System.out.print("> ");
@@ -16,8 +26,11 @@ public class Main {
                 commandHandler.getGameState(command);
             } else if(command.contains("SET GAMESEQUENCE")) {
                 commandHandler.setGameSequence(command);
-            }else if(command.contains("GET GAMESEQUENCE")) {
+            } else if(command.contains("GET GAMESEQUENCE")) {
                 commandHandler.getGameSequence();
+            } else if(command.contains("HTTP")) {
+                MainResponse res = api.get("https://squidgameserver.herokuapp.com", MainResponse.class);
+                System.out.println(res.message);
             } else if(command.contains("EXIT")) {
                 System.out.println("Exited the Squid Game Control Room");
                 break;

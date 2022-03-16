@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
 }
 
 group 'org.example'
@@ -17,4 +19,13 @@ dependencies {
     implementation group: 'io.netty', name: 'netty-all', version: '4.1.71.Final'
     // https://mvnrepository.com/artifact/io.socket/socket.io-client
     implementation group: 'io.socket', name: 'socket.io-client', version: '2.0.1'
+    // https://mvnrepository.com/artifact/org.openjfx/javafx
+    implementation group: 'org.openjfx', name: 'javafx', version: '11', ext: 'pom'
+//    implementation group: 'Commentsorg.openjfx', name: 'javafx-controls', version: '19-ea+2'
+//    implementation 'org.openjfx:javafx-fxml:19-ea+2'
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.web', 'javafx.controls', 'javafx.fxml']
 }

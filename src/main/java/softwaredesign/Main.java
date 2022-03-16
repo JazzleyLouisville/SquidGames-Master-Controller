@@ -29,9 +29,9 @@ public class Main {
             } else if(command.contains("GET GAMESEQUENCE")) {
                 commandHandler.getGameSequence();
             } else if(command.contains("HTTP")) {
-                MainResponse res = api.get("https://squidgameserver.herokuapp.com", MainResponse.class);
+                MainResponse res = api.get("https://squidgameserver.herokuapp.com", new MainResponse());
                 System.out.println(res.message);
-            } else if(command.contains("EXIT")) {
+            }else if(command.contains("EXIT")) {
                 System.out.println("Exited the Squid Game Control Room");
                 break;
             }

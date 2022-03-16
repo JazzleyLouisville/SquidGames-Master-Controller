@@ -37,14 +37,20 @@ public class API {
                     .GET()
                     .build();
                 break;
+            case POST:
+//                request = HttpRequest.newBuilder()
+//                        .uri(new URI(url))
+//                        .version(HttpClient.Version.HTTP_2)
+//                        .POST()
+//                        .build();
         }
 
         return request;
     }
 
-    protected  MainResponse get(String url, Class mr) throws Exception {
+    protected <T> T get(String url, T type) throws Exception {
         final String resBody = client.send(this.createRequest(url, Methods.GET), HttpResponse.BodyHandlers.ofString()).body();
-        return (MainResponse) g.fromJson(resBody, mr);
+        return (T) g.fromJson(resBody, type.getClass());
     }
 
 }

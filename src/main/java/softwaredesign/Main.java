@@ -28,10 +28,14 @@ public class Main {
                 commandHandler.setGameSequence(command);
             } else if(command.contains("GET GAMESEQUENCE")) {
                 commandHandler.getGameSequence();
-            } else if(command.contains("HTTP")) {
+            } else if(command.contains("HTTP TEST")) {
                 MainResponse res = api.get("https://squidgameserver.herokuapp.com", new MainResponse());
                 System.out.println(res.message);
-            }else if(command.contains("EXIT")) {
+            } else if(command.contains("HTTP USERS")) {
+                UserResponse res = api.get("https://squidgameserver.herokuapp.com/users", new UserResponse());
+                System.out.println(res.usernames);
+            }
+            else if(command.contains("EXIT")) {
                 System.out.println("Exited the Squid Game Control Room");
                 break;
             }

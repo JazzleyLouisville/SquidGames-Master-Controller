@@ -6,5 +6,7 @@ softwaredesign/API.java
  softwaredesign.API
  softwaredesign.API$1
  softwaredesign.API$Methods
+softwaredesign/UserResponse.java
+ softwaredesign.UserResponse
 softwaredesign/Main.java
  softwaredesign.Main

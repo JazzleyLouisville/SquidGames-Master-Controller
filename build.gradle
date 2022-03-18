@@ -29,3 +29,5 @@ javafx {
     version = "11.0.2"
     modules = [ 'javafx.web', 'javafx.controls', 'javafx.fxml']
 }
+
+mainClassName = 'softwaredesign.Main'

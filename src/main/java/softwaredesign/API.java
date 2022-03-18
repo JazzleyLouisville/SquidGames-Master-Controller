@@ -1,11 +1,14 @@
 package softwaredesign;
 
 import com.google.gson.Gson;
+import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class API {
     HttpClient client;
@@ -24,7 +27,7 @@ public class API {
        BASE_URL = "https://squidgameserver.herokuapp.com";
     }
 
-    private HttpRequest createRequest(String url, Methods method) throws Exception {
+    private HttpRequest createRequest(String url, Methods method, HashMap... reqBody) throws Exception {
         if (url.equals("")) {
             throw new Exception("No url provided");
         }
@@ -38,11 +41,14 @@ public class API {
                     .build();
                 break;
             case POST:
-//                request = HttpRequest.newBuilder()
-//                        .uri(new URI(url))
-//                        .version(HttpClient.Version.HTTP_2)
-//                        .POST()
-//                        .build();
+                System.out.println(g.toJson(reqBody));
+                request = HttpRequest.newBuilder()
+                        .uri(new URI(url))
+                        .version(HttpClient.Version.HTTP_2)
+                        .header("Content-Type", "application/json")
+                        .POST(HttpRequest.BodyPublishers.ofString(g.toJson(reqBody)))
+                        .build();
+                break;
         }
 
         return request;
@@ -50,6 +56,11 @@ public class API {
 
     protected <T> T get(String url, T type) throws Exception {
         final String resBody = client.send(this.createRequest(url, Methods.GET), HttpResponse.BodyHandlers.ofString()).body();
+        return (T) g.fromJson(resBody, type.getClass());
+    }
+
+    protected <T> T post(String url, HashMap body, T type) throws Exception {
+        final String resBody = client.send(this.createRequest(url, Methods.POST, body), HttpResponse.BodyHandlers.ofString()).body();
         return (T) g.fromJson(resBody, type.getClass());
     }
 

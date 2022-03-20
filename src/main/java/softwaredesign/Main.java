@@ -1,48 +1,36 @@
 package softwaredesign;
 
-import java.util.Scanner;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-//import javafx.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
-    public static void main (String[] args) {
-        launch(args);
-    }
+    private static Stage curr;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Test");
-
-        StackPane layout = new StackPane();
-
-        Scene scene = new Scene(layout, 300, 250);
-        primaryStage.setScene(scene);
+    public void start(Stage primaryStage) throws Exception{
+        curr = primaryStage;
+        primaryStage.setResizable(false);
+        URL url = new File("src/main/java/softwaredesign/startScreen.fxml").toURI().toURL();
+        Parent root = FXMLLoader.load(url);
+        primaryStage.setTitle("Squid games");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-//        CommandHandler commandHandler = new CommandHandler();
-//        System.out.println("Welcome to the Squid Game Control Room");
-//        while (true) {
-//            System.out.print("> ");
-//            Scanner scanner = new Scanner(System.in);
-//            String command = scanner.nextLine();
-//            if(command.contains("SET GAMESTATE")) {
-//                commandHandler.setGameState(command);
-//            } else if(command.contains("GET GAMESTATE")) {
-//                commandHandler.getGameState(command);
-//            } else if(command.contains("SET GAMESEQUENCE")) {
-//                commandHandler.setGameSequence(command);
-//            }else if(command.contains("GET GAMESEQUENCE")) {
-//                commandHandler.getGameSequence();
-//            } else if(command.contains("EXIT")) {
-//                System.out.println("Exited the Squid Game Control Room");
-//                break;
-//            }
-//        }
-//    }
 
+    public void screenChange (String fxml) throws IOException{
+        URL url = new File(fxml).toURI().toURL();
+        Parent p = FXMLLoader.load(url);
+        curr.getScene().setRoot(p);
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

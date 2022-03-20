@@ -1,4 +1,10 @@
-softwaredesign/CommandHandler.java
- softwaredesign.CommandHandler
+softwaredesign/waitingController.java
+ softwaredesign.waitingController
 softwaredesign/Main.java
  softwaredesign.Main
+softwaredesign/CommandHandler.java
+ softwaredesign.CommandHandler
+softwaredesign/startController.java
+ softwaredesign.startController
+softwaredesign/controlRoom.java
+ softwaredesign.controlRoom

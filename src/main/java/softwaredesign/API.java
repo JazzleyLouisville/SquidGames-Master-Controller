@@ -24,7 +24,7 @@ public class API {
     API () {
        client = HttpClient.newHttpClient();
        g = new Gson();
-       BASE_URL = "https://squidgameserver.herokuapp.com";
+       BASE_URL = "https://squidgameserver.herokuapp.com/";
     }
 
     private HttpRequest createRequest(String url, Methods method, HashMap... reqBody) throws Exception {
@@ -54,13 +54,13 @@ public class API {
         return request;
     }
 
-    protected <T> T get(String url, T type) throws Exception {
-        final String resBody = client.send(this.createRequest(url, Methods.GET), HttpResponse.BodyHandlers.ofString()).body();
+    protected <T> T get(String path, T type) throws Exception {
+        final String resBody = client.send(this.createRequest(BASE_URL + path, Methods.GET), HttpResponse.BodyHandlers.ofString()).body();
         return (T) g.fromJson(resBody, type.getClass());
     }
 
-    protected <T> T post(String url, HashMap body, T type) throws Exception {
-        final String resBody = client.send(this.createRequest(url, Methods.POST, body), HttpResponse.BodyHandlers.ofString()).body();
+    protected <T> T post(String path, HashMap body, T type) throws Exception {
+        final String resBody = client.send(this.createRequest(BASE_URL + path, Methods.POST, body), HttpResponse.BodyHandlers.ofString()).body();
         return (T) g.fromJson(resBody, type.getClass());
     }
 

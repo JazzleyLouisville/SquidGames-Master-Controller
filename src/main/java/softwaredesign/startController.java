@@ -6,6 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import softwaredesign.responses.PasswordResponse;
+
 import java.io.IOException;
 
 public class startController extends Main {
@@ -16,7 +18,13 @@ public class startController extends Main {
     @FXML
     private TextField username;
 
-    public void masterLogIn(ActionEvent event) throws IOException{
+    API api;
+
+    public startController() {
+        api = new API();
+    }
+
+    public void masterLogIn(ActionEvent event) throws Exception {
         checkMaster();
     }
 
@@ -34,10 +42,12 @@ public class startController extends Main {
         m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }
 
-    private void checkMaster() throws IOException {
+    private void checkMaster() throws IOException, Exception {
         Main m = new Main();
 
-        if (password.getText().toString().equals("nigger")) {
+        final PasswordResponse response = api.get("get_password", new PasswordResponse());
+        final String savedPassword = response.password;
+        if (password.getText().equals(savedPassword)) {
             pLabel.setTextFill(Color.GREEN);
             pLabel.setText("Permission granted");
             m.screenChange("src/main/java/softwaredesign/afterLogIn.fxml");
@@ -50,7 +60,6 @@ public class startController extends Main {
 
     private void checkUsername() throws IOException{
         Main m = new Main();
-
         if (username.getText().isBlank()) {
             pLabel.setTextFill(Color.RED);
             pLabel.setText("Enter your username");

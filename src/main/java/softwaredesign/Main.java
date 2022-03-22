@@ -31,8 +31,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws Exception {
-        API api = new API();
-        UserResponse res = api.get("https://squidgameserver.herokuapp.com/users", new UserResponse());
         launch(args);
     }
 }

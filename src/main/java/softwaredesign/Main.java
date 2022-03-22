@@ -30,7 +30,9 @@ public class Main extends Application {
         curr.getScene().setRoot(p);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        API api = new API();
+        UserResponse res = api.get("https://squidgameserver.herokuapp.com/users", new UserResponse());
         launch(args);
     }
 }

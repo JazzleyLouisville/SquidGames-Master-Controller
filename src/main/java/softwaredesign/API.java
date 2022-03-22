@@ -14,6 +14,7 @@ public class API {
     HttpClient client;
     Gson g;
     final String BASE_URL;
+    private final boolean IS_LOCAL = false;
     static enum Methods {
         GET,
         POST,
@@ -24,7 +25,7 @@ public class API {
     API () {
        client = HttpClient.newHttpClient();
        g = new Gson();
-       BASE_URL = "https://squidgameserver.herokuapp.com/";
+       BASE_URL = !IS_LOCAL ? "https://squidgameserver.herokuapp.com/" : "http://localhost:3333/";
     }
 
     private HttpRequest createRequest(String url, Methods method, HashMap... reqBody) throws Exception {

@@ -8,9 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import softwaredesign.responses.GeneralResponse;
+import softwaredesign.responses.InvitationResponse;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class waitingController implements Initializable{
     @FXML
@@ -22,12 +27,17 @@ public class waitingController implements Initializable{
     @FXML
     private Label label;
 
-
+    private API api;
+    final int pollingDelay = 5; //  Seconds
+    public waitingController() {
+        api = new API();
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         setRotate(circle, true, 360, 60);
         setSquare(square,true, 180, 60);
         setTriangle(triangle, false, 360, 60);
+        checkIfInvited();
     }
 
     private void setRotate (Circle c, boolean reverse, int angle, int duration) {
@@ -63,6 +73,24 @@ public class waitingController implements Initializable{
         rotateTransition.play();
     }
 
+    void checkIfInvited() {
+        Timer timer = new Timer();
+        waitingController _this = this;
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                try {
+                    InvitationResponse response = _this.api.get("invitation?username=" + startController.publicUsername, new InvitationResponse());
+                    if(response.invited) {
+                        timer.cancel();
+                        //  Other stuff;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }, 0, pollingDelay * 1000);
+    }
 }
 
 

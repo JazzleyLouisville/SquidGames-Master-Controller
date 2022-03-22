@@ -6,9 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.PasswordResponse;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class startController extends Main {
     @FXML
@@ -17,6 +19,8 @@ public class startController extends Main {
     private Label pLabel;
     @FXML
     private TextField username;
+
+    static public String publicUsername;
 
     API api;
 
@@ -28,12 +32,12 @@ public class startController extends Main {
         checkMaster();
     }
 
-    public void userLogIn(ActionEvent event) throws IOException{
+    public void userLogIn(ActionEvent event) throws IOException {
         Main m = new Main();
         m.screenChange("src/main/java/softwaredesign/userLogIn.fxml");
     }
 
-    public void waitingRoom(ActionEvent event) throws IOException{
+    public void waitingRoom(ActionEvent event) throws Exception {
         checkUsername();
     }
 
@@ -58,13 +62,24 @@ public class startController extends Main {
         }
     }
 
-    private void checkUsername() throws IOException{
+    private void checkUsername() throws Exception {
         Main m = new Main();
-        if (username.getText().isBlank()) {
+        final String receivedUsername = username.getText();
+        if (receivedUsername.isBlank()) {
             pLabel.setTextFill(Color.RED);
             pLabel.setText("Enter your username");
-        } else {
-            m.screenChange("src/main/java/softwaredesign/waitingRoom.fxml");
+            return;
         }
+        sendUsername(receivedUsername);
+        m.screenChange("src/main/java/softwaredesign/waitingRoom.fxml");
+
+    }
+    private boolean sendUsername(String username) throws Exception {
+        final HashMap body = new HashMap();
+        body.put("username", username);
+        startController.publicUsername = username;
+        final GeneralResponse response = api.post("user", body, new GeneralResponse());
+        System.out.println(response.message);
+        return true;
     }
 }

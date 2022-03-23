@@ -1,0 +1,11 @@
+.first-button{
+    -fx-shape:"M 250 150 L 400 150 L 450 250 L 400 350 L 250 350 L 200 250 L 250 150";
+    -fx-background-color: #039BE5;
+}
+
+.tab-header-background {
+    -fx-background-color: rgba(0, 0, 0, 0.9);
+}
+.tab-label{
+  -fx-text-fill: orange;
+}

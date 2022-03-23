@@ -54,7 +54,7 @@ public class startController extends Main {
         if (password.getText().equals(savedPassword)) {
             pLabel.setTextFill(Color.GREEN);
             pLabel.setText("Permission granted");
-            m.screenChange("src/main/java/softwaredesign/afterLogIn.fxml");
+            m.screenChange("src/main/java/softwaredesign/masterRoom.fxml");
         } else if (password.getText().isEmpty()){
             pLabel.setText("Enter the password");
         } else {

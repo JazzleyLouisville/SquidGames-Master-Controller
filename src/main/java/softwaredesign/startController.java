@@ -21,6 +21,7 @@ public class startController extends Main {
     @FXML
     private TextField username;
 
+
     static public String publicUsername;
 
     API api;
@@ -31,6 +32,10 @@ public class startController extends Main {
 
     public void masterLogIn(ActionEvent event) throws Exception {
         checkMaster();
+    }
+    public void devLogin(ActionEvent event)throws Exception{
+        Main m = new Main();
+        m.screenChange("src/main/java/softwaredesign/devScreen.fxml");
     }
 
     public void userLogIn(ActionEvent event) throws IOException {

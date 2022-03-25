@@ -2,7 +2,7 @@ package softwaredesign.constants;
 
 public class NetworkingConstants {
     //  Using local server
-    public final static boolean IS_LOCAL = true;
+    public final static boolean IS_LOCAL = false;
     //  Servers
     public final static String BASE_URL = "https://squidgameserver.herokuapp.com/";
     public final static String LOCALHOST_SERVER = "http://localhost:3333/";

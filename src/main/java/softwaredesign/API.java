@@ -2,6 +2,7 @@ package softwaredesign;
 
 import com.google.gson.Gson;
 import org.json.JSONObject;
+import softwaredesign.constants.NetworkingConstants;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -14,7 +15,6 @@ public class API {
     HttpClient client;
     Gson g;
     final String BASE_URL;
-    private final boolean IS_LOCAL = false;
     static enum Methods {
         GET,
         POST,
@@ -25,12 +25,12 @@ public class API {
     API () {
        client = HttpClient.newHttpClient();
        g = new Gson();
-       BASE_URL = !IS_LOCAL ? "https://squidgameserver.herokuapp.com/" : "http://localhost:3333/";
+       BASE_URL = NetworkingConstants.IS_LOCAL ? NetworkingConstants.BASE_URL : NetworkingConstants.LOCALHOST_SERVER;
     }
 
     private HttpRequest createRequest(String url, Methods method, HashMap... reqBody) throws Exception {
         if (url.equals("")) {
-            throw new Exception("No url provided");
+            throw new Exception(NetworkingConstants.NO_URL);
         }
         HttpRequest request = null;
         switch (method) {

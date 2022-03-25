@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import softwaredesign.constants.NetworkingConstants;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.InvitationResponse;
 
@@ -80,7 +81,7 @@ public class waitingController implements Initializable{
             @Override
             public void run() {
                 try {
-                    InvitationResponse response = _this.api.get("invitation?username=" + startController.publicUsername, new InvitationResponse());
+                    InvitationResponse response = _this.api.get(NetworkingConstants.GET_INVITATION_PATH + "?username=" + startController.publicUsername, new InvitationResponse());
                     if(response.invited) {
                         timer.cancel();
                         //  Other stuff;

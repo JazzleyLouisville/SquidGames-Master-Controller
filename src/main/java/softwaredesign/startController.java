@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import softwaredesign.constants.NetworkingConstants;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.PasswordResponse;
 
@@ -49,7 +50,7 @@ public class startController extends Main {
     private void checkMaster() throws IOException, Exception {
         Main m = new Main();
 
-        final PasswordResponse response = api.get("get_password", new PasswordResponse());
+        final PasswordResponse response = api.get(NetworkingConstants.GET_PASSWORD_PATH, new PasswordResponse());
         final String savedPassword = response.password;
         if (password.getText().equals(savedPassword)) {
             pLabel.setTextFill(Color.GREEN);
@@ -78,7 +79,7 @@ public class startController extends Main {
         final HashMap body = new HashMap();
         body.put("username", username);
         startController.publicUsername = username;
-        final GeneralResponse response = api.post("user", body, new GeneralResponse());
+        final GeneralResponse response = api.post(NetworkingConstants.POST_USER_PATH, body, new GeneralResponse());
         System.out.println(response.message);
         return true;
     }

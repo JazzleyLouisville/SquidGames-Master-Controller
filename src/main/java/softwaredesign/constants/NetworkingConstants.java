@@ -12,6 +12,7 @@ public class NetworkingConstants {
     public final static String GET_INVITATION_PATH = "invitation";
     public final static String GET_PASSWORD_PATH = "get_password";
     public final static String POST_USER_PATH = "user";
+    public final static String GET_DEV_GAMES_PATH = "all_games" ;
     //  Error responses
     public final static String NO_URL = "No URL provided.";
 

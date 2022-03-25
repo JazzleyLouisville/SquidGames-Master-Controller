@@ -7,6 +7,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import softwaredesign.constants.NetworkingConstants;
+import softwaredesign.responses.GameFromServer;
+import softwaredesign.responses.GameResponse;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.UserResponse;
 
@@ -63,7 +65,7 @@ public class controlRoom {
 //
 //    }
 
-    public controlRoom() {
+    public controlRoom() throws Exception {
         api = new API();
     }
     void inviteUsers(String[] users) throws Exception {
@@ -86,6 +88,16 @@ public class controlRoom {
     String[] getAllWaitingUsers() throws Exception {
         UserResponse res = api.get(NetworkingConstants.GET_USER_PATH, new UserResponse());
         return res.users;
+    }
+
+    Game[] getDeveloperGames() throws Exception {
+        GameResponse response = api.get(NetworkingConstants.GET_DEV_GAMES_PATH, new GameResponse());
+        Game[] gamesToReturn = new Game[response.games.length];
+        for (int i = 0; i < response.games.length; i++) {
+            GameFromServer currentGame = response.games[i];
+            gamesToReturn[i] = new Game(currentGame.gameName, currentGame.rounds, currentGame.winPercentage, GameState.STOP);
+        }
+        return gamesToReturn;
     }
 
 }

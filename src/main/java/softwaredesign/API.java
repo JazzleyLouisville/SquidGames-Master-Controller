@@ -25,7 +25,7 @@ public class API {
     API () {
        client = HttpClient.newHttpClient();
        g = new Gson();
-       BASE_URL = NetworkingConstants.IS_LOCAL ? NetworkingConstants.BASE_URL : NetworkingConstants.LOCALHOST_SERVER;
+       BASE_URL = NetworkingConstants.IS_LOCAL ? NetworkingConstants.LOCALHOST_SERVER : NetworkingConstants.BASE_URL;
     }
 
     private HttpRequest createRequest(String url, Methods method, HashMap... reqBody) throws Exception {

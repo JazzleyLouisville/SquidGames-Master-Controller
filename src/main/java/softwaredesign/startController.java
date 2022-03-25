@@ -7,6 +7,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import softwaredesign.constants.NetworkingConstants;
+import softwaredesign.responses.GameFromServer;
+import softwaredesign.responses.GameResponse;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.PasswordResponse;
 
@@ -83,4 +85,5 @@ public class startController extends Main {
         System.out.println(response.message);
         return true;
     }
+
 }

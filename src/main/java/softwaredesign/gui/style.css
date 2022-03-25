@@ -9,3 +9,7 @@
 .tab-label{
   -fx-text-fill: orange;
 }
+.table-header{
+    -fx-content-display: center;
+    /*-fx-alignment: center;*/
+}

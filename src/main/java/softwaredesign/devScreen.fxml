@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0" >
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.devController">
+   <children>
+      <ImageView fitHeight="191.0" fitWidth="225.0" layoutX="188.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/roundsCorrect.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="187.0" fitWidth="225.0" layoutX="399.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/rounds.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="184.0" fitWidth="207.0" layoutX="-15.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Game%20name.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/Squid-Game-Official-Logo-PNG.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="gameNameLbl" layoutX="14.0" layoutY="201.0" />
+      <TextField fx:id="roundLbl" layoutX="226.0" layoutY="201.0" />
+      <TextField fx:id="winPerLbl" layoutX="437.0" layoutY="201.0" />
+      <Button fx:id="devBtn" layoutX="255.0" layoutY="254.0" mnemonicParsing="false" onAction="#devSend" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;">
+         <font>
+            <Font name="Wingdings 2" size="16.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/submit.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
 </AnchorPane>

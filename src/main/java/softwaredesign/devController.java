@@ -5,6 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import softwaredesign.constants.NetworkingConstants;
+import softwaredesign.responses.GeneralResponse;
+
+import java.util.HashMap;
 
 public class devController {
 
@@ -21,8 +25,25 @@ public class devController {
     private Button devBtn;
 
     @FXML
-    void devSend(ActionEvent event) {
+    void devSend(ActionEvent event) throws Exception {
+        Game game = new Game(gameNameLbl.getText(), Integer.parseInt(roundLbl.getText()), Float.parseFloat(winPerLbl.getText()), GameState.STOP);
+        submitGame(game);
+        //  Further implementation after submitting a game
+    }
 
+    private API api;
+
+    public devController() {
+        this.api = new API();
+    }
+
+    private void submitGame(Game game) throws Exception {
+        HashMap body = new HashMap();
+        body.put("gameName", game.gameName);
+        body.put("rounds", game.rounds);
+        body.put("winPercentage", game.winPercentage);
+        GeneralResponse response = api.post(NetworkingConstants.POST_DEV_GAME_PATH, body, new GeneralResponse());
+        System.out.println(response.message);
     }
 
 }

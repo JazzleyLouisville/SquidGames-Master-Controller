@@ -74,9 +74,28 @@ public class masterController {
     private Label currLbl;
 
     @FXML
-    void masterLogIn(ActionEvent event) {
+    void getAllPlayers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void getCurrentPlayers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void inviteUsers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setGameSequence(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setGameState(ActionEvent event) {
 
     }
 
 }
-

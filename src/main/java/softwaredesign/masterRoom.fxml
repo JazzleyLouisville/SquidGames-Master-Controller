@@ -14,7 +14,7 @@
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.startController">
   <tabs>
-      <Tab fx:id="InvitePlayersTab" closable="false" text="All players">
+      <Tab fx:id="InvitePlayersTab" closable="false" onSelectionChanged="#getAllPlayers" text="All players">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -23,7 +23,7 @@
                         <InnerShadow />
                      </effect>
                   </ListView>
-                  <Button fx:id="logInButton" layoutX="427.0" layoutY="86.0" mnemonicParsing="false" onAction="#masterLogIn" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;" text="Invite">
+                  <Button fx:id="logInButton" layoutX="427.0" layoutY="86.0" mnemonicParsing="false" onAction="#inviteUsers" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;" text="Invite">
                      <font>
                         <Font name="Wingdings 2" size="16.0" />
                      </font>
@@ -37,7 +37,7 @@
             </AnchorPane>
         </content>
       </Tab>
-      <Tab fx:id="CurrentPlayersTab" closable="false" text="Current Players">
+      <Tab fx:id="CurrentPlayersTab" closable="false" onSelectionChanged="#getCurrentPlayers" text="Current Players">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -97,7 +97,7 @@
             </AnchorPane>
         </content>
       </Tab>
-    <Tab fx:id="GameSequenceTab" closable="false" text="Game Sequence">
+    <Tab fx:id="GameSequenceTab" closable="false" onSelectionChanged="#setGameSequence" text="Game Sequence">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -116,7 +116,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab fx:id="CurrentGameTab" closable="false" text="Game Overview">
+    <Tab fx:id="CurrentGameTab" closable="false" onSelectionChanged="#setGameState" text="Game Overview">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

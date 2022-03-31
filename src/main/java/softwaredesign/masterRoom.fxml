@@ -12,25 +12,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.startController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.controlRoom">
   <tabs>
       <Tab fx:id="InvitePlayersTab" closable="false" text="All players">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="LstVwPlayers" layoutX="100.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <ListView fx:id="LstVwPlayers" layoutX="100.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                   </ListView>
-                  <Button fx:id="logInButton" layoutX="427.0" layoutY="86.0" mnemonicParsing="false" onAction="#masterLogIn" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;" text="Invite">
+                  <Button fx:id="inviteBtn" layoutX="427.0" layoutY="86.0" mnemonicParsing="false" onAction="#sendInvite" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;" text="Invite">
                      <font>
                         <Font name="Wingdings 2" size="16.0" />
                      </font>
                   </Button>
-                  <Label fx:id="InviteAck" layoutX="368.0" layoutY="242.0" text="Invited" textFill="RED">
+                  <Label fx:id="InviteAck" alignment="CENTER" layoutX="345.0" layoutY="186.0" prefHeight="43.0" prefWidth="239.0" textAlignment="CENTER" textFill="RED">
                      <font>
-                        <Font size="60.0" />
+                        <Font size="29.0" />
                      </font>
                   </Label>
                </children>
@@ -41,44 +41,44 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="237.0" layoutY="126.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <Button fx:id="CurMidBtn" layoutX="237.0" layoutY="126.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                      <graphic>
-                        <Label fx:id="CenterLabel" text="{player name}" />
+                        <Label fx:id="CenterLabel" />
                      </graphic>
                   </Button>
-                  <Button layoutX="338.0" layoutY="66.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <Button fx:id="CurTopRightBtn" layoutX="338.0" layoutY="66.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                      <graphic>
-                        <Label fx:id="RightTopLabel" text="{player name}" />
+                        <Label fx:id="RightTopLabel" />
                      </graphic>
                   </Button>
-                  <Button layoutX="338.0" layoutY="186.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <Button fx:id="CurBotRightBtn" layoutX="338.0" layoutY="186.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                      <graphic>
-                        <Label fx:id="RightBottomLabel" text="{player name}" />
+                        <Label fx:id="RightBottomLabel" />
                      </graphic>
                   </Button>
-                  <Button layoutX="137.0" layoutY="66.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <Button fx:id="CurTopLeftBtn" layoutX="137.0" layoutY="66.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                      <graphic>
-                        <Label fx:id="LeftTopLabel" text="{player name}" />
+                        <Label fx:id="LeftTopLabel" />
                      </graphic>
                   </Button>
-                  <Button layoutX="137.0" layoutY="186.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                  <Button fx:id="CurBotLeftBtn" layoutX="137.0" layoutY="186.0" mnemonicParsing="false" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
                      <effect>
                         <InnerShadow />
                      </effect>
                      <graphic>
-                        <Label fx:id="LeftBottomLabel" text="{player name}" />
+                        <Label fx:id="LeftBottomLabel" />
                      </graphic>
                   </Button>
                   <ImageView fx:id="KillImg" fitHeight="62.0" fitWidth="72.0" layoutX="514.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
@@ -99,7 +99,15 @@
       </Tab>
     <Tab fx:id="GameSequenceTab" closable="false" text="Game Sequence">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="LstVwGames" layoutX="78.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Button fx:id="inviteBtn1" layoutX="378.0" layoutY="86.0" mnemonicParsing="false" onAction="#sendInvite" prefHeight="42.0" prefWidth="162.0" style="-fx-background-color: #ef9cb5;" text="Add to sequence">
+                     <font>
+                        <Font name="Wingdings 2" size="16.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
       </content>
     </Tab>
     <Tab fx:id="CurrentGameTab" closable="false" text="Game Overview">

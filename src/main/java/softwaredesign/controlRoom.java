@@ -1,27 +1,39 @@
 package softwaredesign;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 import softwaredesign.constants.NetworkingConstants;
 import softwaredesign.responses.GameFromServer;
 import softwaredesign.responses.GameResponse;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.UserResponse;
 
-import java.util.HashMap;
+import java.net.URL;
+import java.util.*;
 
-public class controlRoom {
+public class controlRoom implements Initializable {
+
+
+    @FXML
+    private Button inviteBtn;
 
     @FXML
     private Tab InvitePlayersTab;
 
     @FXML
-    private ListView<?> LstVwPlayers;
+    private ListView<String> LstVwPlayers; //was <?>
 
+    private ObservableList<String> names;
 
     @FXML
     private Label InviteAck;
@@ -67,6 +79,8 @@ public class controlRoom {
 
     public controlRoom() throws Exception {
         api = new API();
+
+
     }
     void inviteUsers(String[] users) throws Exception {
         if (users.length < 1) {
@@ -100,4 +114,40 @@ public class controlRoom {
         return gamesToReturn;
     }
 
+    void populateList() throws Exception{
+        String[] users = getAllWaitingUsers();
+//        System.out.println(users[0]);
+        if(users.length > 0){
+            LstVwPlayers.setItems(FXCollections.observableArrayList(new ArrayList<>(Arrays.asList(users))));
+        }
+    }
+
+    public void sendInvite(ActionEvent event) throws Exception {
+        int delay = 5000;
+        int period = 1000;
+        final int[] counter = {0};
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run() {
+                InviteAck.setTextFill(Color.GREEN);
+                InviteAck.setText("invited");
+                counter[0]++;
+            }
+        },delay,period);
+
+        String[]test = {"Jemairo","Zack"};
+        inviteUsers(test);
+
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            populateList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

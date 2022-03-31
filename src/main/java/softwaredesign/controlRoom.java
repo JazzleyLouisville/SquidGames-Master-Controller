@@ -1,15 +1,11 @@
 package softwaredesign;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import softwaredesign.constants.NetworkingConstants;
@@ -18,6 +14,7 @@ import softwaredesign.responses.GameResponse;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.UserResponse;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -130,24 +127,27 @@ public class controlRoom implements Initializable {
     m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }
     public void sendInvite(ActionEvent event) throws Exception {
-        int delay = 5000;
-        int period = 1000;
-        final int[] counter = {0};
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask(){
-            @Override
-            public void run() {
-                InviteAck.setTextFill(Color.GREEN);
-                InviteAck.setText("invited");
-                counter[0]++;
-            }
-        },delay,period);
-
-        String[]test = {"Jemairo","Zack"};
-        inviteUsers(test);
+//        int delay = 5000;
+//        int period = 1000;
+//        final int[] counter = {0};
+//        Timer timer = new Timer();
+//        timer.schedule(new TimerTask(){
+//            @Override
+//            public void run() {
+//                InviteAck.setTextFill(Color.GREEN);
+//                InviteAck.setText("invited");
+//                counter[0]++;
+//            }
+//        },delay,period);
+//        LstVwPlayers.getSelectionModel().getSelectedItem();
+        String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
+        inviteUsers(user);
 
 
     }
+
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

@@ -1,5 +1,6 @@
 package softwaredesign;
 
+import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import softwaredesign.constants.NetworkingConstants;
 import softwaredesign.responses.GameFromServer;
 import softwaredesign.responses.GameResponse;
@@ -140,6 +142,15 @@ public class controlRoom implements Initializable {
 //            }
 //        },delay,period);
 //        LstVwPlayers.getSelectionModel().getSelectedItem();
+        if(event != null){
+            InviteAck.setTextFill(Color.GREEN);
+            InviteAck.setText("Invited");
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(f-> InviteAck.setText(null));
+            pause.play();
+        }
+
+
         String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
         inviteUsers(user);
 

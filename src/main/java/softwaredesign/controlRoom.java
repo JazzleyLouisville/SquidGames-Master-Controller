@@ -18,6 +18,7 @@ import softwaredesign.responses.GameResponse;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.UserResponse;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -26,6 +27,8 @@ public class controlRoom implements Initializable {
 
     @FXML
     private Button inviteBtn;
+    @FXML
+    private Button BackBtn;
 
     @FXML
     private Tab InvitePlayersTab;
@@ -34,6 +37,9 @@ public class controlRoom implements Initializable {
     private ListView<String> LstVwPlayers; //was <?>
 
     private ObservableList<String> names;
+
+    @FXML
+    private ImageView BackArrow;
 
     @FXML
     private Label InviteAck;
@@ -72,14 +78,9 @@ public class controlRoom implements Initializable {
 
     String[] selectedPlayers;
 
-//    @FXML
-//    void controlRoom(ActionEvent event) {
-//
-//    }
 
     public controlRoom() throws Exception {
         api = new API();
-
 
     }
     void inviteUsers(String[] users) throws Exception {
@@ -122,6 +123,12 @@ public class controlRoom implements Initializable {
         }
     }
 
+
+    @FXML
+    void backScreenChange(ActionEvent event) throws IOException {
+    Main m = new Main();
+    m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+    }
     public void sendInvite(ActionEvent event) throws Exception {
         int delay = 5000;
         int period = 1000;

@@ -33,6 +33,15 @@
                         <Font size="29.0" />
                      </font>
                   </Label>
+                  <Button fx:id="BackBtn" layoutX="502.0" layoutY="312.0" mnemonicParsing="false" onAction="#backScreenChange" prefHeight="31.0" prefWidth="54.0" styleClass="button-transparent" stylesheets="@gui/style.css" textFill="TRANSPARENT">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/44-440200_arrow-clipart-blue-arrow-left-arrow-clipart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
         </content>

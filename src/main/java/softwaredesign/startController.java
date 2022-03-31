@@ -2,6 +2,7 @@ package softwaredesign;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -22,7 +23,8 @@ public class startController extends Main {
     private Label pLabel;
     @FXML
     private TextField username;
-
+    @FXML
+    private Button BackBtn;
 
     static public String publicUsername;
 
@@ -50,6 +52,12 @@ public class startController extends Main {
     }
 
     public void switchToLogIn (ActionEvent event) throws IOException{
+        Main m = new Main();
+        m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+    }
+
+    @FXML
+    void backScreenChange(ActionEvent event) throws IOException {
         Main m = new Main();
         m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }

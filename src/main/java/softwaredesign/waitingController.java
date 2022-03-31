@@ -1,7 +1,9 @@
 package softwaredesign;
 
 import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
@@ -12,11 +14,13 @@ import softwaredesign.constants.NetworkingConstants;
 import softwaredesign.responses.GeneralResponse;
 import softwaredesign.responses.InvitationResponse;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
+
 
 public class waitingController implements Initializable{
     @FXML
@@ -27,6 +31,9 @@ public class waitingController implements Initializable{
     private ImageView triangle;
     @FXML
     private Label label;
+
+    @FXML
+    private Button BackBtn;
 
     private API api;
     final int pollingDelay = 5; //  Seconds
@@ -39,6 +46,11 @@ public class waitingController implements Initializable{
         setSquare(square,true, 180, 60);
         setTriangle(triangle, false, 360, 60);
         checkIfInvited();
+    }
+    @FXML
+    void backScreenChange(ActionEvent event) throws IOException {
+        Main m = new Main();
+        m.screenChange("src/main/java/softwaredesign/userLogin.fxml");
     }
 
     private void setRotate (Circle c, boolean reverse, int angle, int duration) {

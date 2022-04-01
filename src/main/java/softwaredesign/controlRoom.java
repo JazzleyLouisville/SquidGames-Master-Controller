@@ -116,10 +116,10 @@ public class controlRoom implements Initializable {
 
     void populateList() throws Exception{
         String[] users = getAllWaitingUsers();
-//        System.out.println(users[0]);
         if(users.length > 0){
             LstVwPlayers.setItems(FXCollections.observableArrayList(new ArrayList<>(Arrays.asList(users))));
         }
+
     }
 
 
@@ -129,19 +129,6 @@ public class controlRoom implements Initializable {
     m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }
     public void sendInvite(ActionEvent event) throws Exception {
-//        int delay = 5000;
-//        int period = 1000;
-//        final int[] counter = {0};
-//        Timer timer = new Timer();
-//        timer.schedule(new TimerTask(){
-//            @Override
-//            public void run() {
-//                InviteAck.setTextFill(Color.GREEN);
-//                InviteAck.setText("invited");
-//                counter[0]++;
-//            }
-//        },delay,period);
-//        LstVwPlayers.getSelectionModel().getSelectedItem();
         if(event != null){
             InviteAck.setTextFill(Color.GREEN);
             InviteAck.setText("Invited");
@@ -153,7 +140,6 @@ public class controlRoom implements Initializable {
 
         String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
         inviteUsers(user);
-
 
     }
 

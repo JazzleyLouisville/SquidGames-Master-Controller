@@ -104,6 +104,11 @@ public class controlRoom implements Initializable {
         return res.users;
     }
 
+    String[] getAllInvitedUsers() throws Exception {
+        UserResponse res = api.get(NetworkingConstants.GET_INVITED_USERS_PATH, new UserResponse());
+        return res.users;
+    }
+
     Game[] getDeveloperGames() throws Exception {
         GameResponse response = api.get(NetworkingConstants.GET_DEV_GAMES_PATH, new GameResponse());
         Game[] gamesToReturn = new Game[response.games.length];

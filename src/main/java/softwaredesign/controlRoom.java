@@ -114,6 +114,26 @@ public class controlRoom implements Initializable {
         return gamesToReturn;
     }
 
+    void deletePlayer(String username) throws Exception {
+        GeneralResponse res = this.api.delete(NetworkingConstants.DELETE_PLAYER_PATH + "?username=" + username, new GeneralResponse());
+        if(res.message == "NO_USER_FOUND") {
+            System.out.println("No user exists with username: " + username);
+            return;
+        }
+
+        System.out.println(res.message);
+        int idx = -1;
+
+        for (int i = 0; i < this.selectedPlayers.length; i++) {
+            if(this.selectedPlayers[i].equals(username)) {
+                idx = i;
+                break;
+            }
+        }
+        //  This is removing the element in idx
+        System.arraycopy(this.selectedPlayers, idx + 1, this.selectedPlayers, idx, this.selectedPlayers.length - idx - 1);
+    }
+
     void populateList() throws Exception{
         String[] users = getAllWaitingUsers();
         if(users.length > 0){

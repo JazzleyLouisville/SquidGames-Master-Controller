@@ -50,6 +50,15 @@ public class API {
                         .POST(HttpRequest.BodyPublishers.ofString(g.toJson(reqBody)))
                         .build();
                 break;
+            case DELETE:
+                System.out.println(g.toJson(reqBody));
+                request = HttpRequest.newBuilder()
+                        .uri(new URI(url))
+                        .version(HttpClient.Version.HTTP_2)
+                        .header("Content-Type", "application/json")
+                        .DELETE()
+                        .build();
+                break;
         }
 
         return request;
@@ -62,6 +71,11 @@ public class API {
 
     protected <T> T post(String path, HashMap body, T type) throws Exception {
         final String resBody = client.send(this.createRequest(BASE_URL + path, Methods.POST, body), HttpResponse.BodyHandlers.ofString()).body();
+        return (T) g.fromJson(resBody, type.getClass());
+    }
+
+    protected <T> T delete(String path, T type) throws Exception {
+        final String resBody = client.send(this.createRequest(BASE_URL + path, Methods.DELETE), HttpResponse.BodyHandlers.ofString()).body();
         return (T) g.fromJson(resBody, type.getClass());
     }
 

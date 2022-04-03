@@ -14,6 +14,7 @@ public class NetworkingConstants {
     public final static String POST_USER_PATH = "user";
     public static final String POST_DEV_GAME_PATH = "add_game";
     public final static String GET_DEV_GAMES_PATH = "all_games" ;
+    public final static String DELETE_PLAYER_PATH = "player" ;
     //  Error responses
     public final static String NO_URL = "No URL provided.";
 

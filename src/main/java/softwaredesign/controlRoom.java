@@ -141,7 +141,9 @@ public class controlRoom implements Initializable {
         }
 
     }
+    void removeFromList() throws Exception{
 
+    }
 
     @FXML
     void backScreenChange(ActionEvent event) throws IOException {

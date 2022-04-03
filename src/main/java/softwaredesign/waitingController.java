@@ -3,7 +3,9 @@ package softwaredesign;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
@@ -16,10 +18,7 @@ import softwaredesign.responses.InvitationResponse;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 
 public class waitingController implements Initializable{
@@ -108,6 +107,11 @@ public class waitingController implements Initializable{
 
     void onInvite() {
         //  ...
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Alert!");
+        alert.setContentText("You have been invited to play a game of squid");
+//        Optional<ButtonType> result = alert.showAndWait();
+
     }
 }
 

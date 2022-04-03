@@ -146,7 +146,52 @@ public class controlRoom implements Initializable {
         }
 
     }
-    void removeFromList() throws Exception{
+    void populateButtons() throws Exception{
+        String[] users = getAllInvitedUsers();
+//        int lengting = users.length;
+//        switch (lengting){
+//            case 1:
+//                LeftTopLabel.setText(users[0]);
+//                break;
+//            case 2:
+//                LeftTopLabel.setText(users[0]);
+//                LeftBottomLabel.setText(users[1]);
+//                break;
+//            case 3:
+//                LeftTopLabel.setText(users[0]);
+//                LeftBottomLabel.setText(users[1]);
+//                CenterLabel.setText(users[2]);
+//                break;
+//            case 4:
+//                LeftTopLabel.setText(users[0]);
+//                LeftBottomLabel.setText(users[1]);
+//                CenterLabel.setText(users[2]);
+//                RightTopLabel.setText(users[3]);
+//                break;
+//            case 5:
+//                LeftTopLabel.setText(users[0]);
+//                LeftBottomLabel.setText(users[1]);
+//                CenterLabel.setText(users[2]);
+//                RightTopLabel.setText(users[3]);
+//                RightBottomLabel.setText(users[4]);
+//                break;
+//            default:
+//                break;
+////                LeftTopLabel.setTextFill(Color.BLACK);
+//
+//        }
+
+//        LeftTopLabel.setText(users[0]);
+//        LeftBottomLabel.setText(users[1]);
+//        CenterLabel.setText(users[2]);
+//        RightTopLabel.setText(users[3]);
+//        RightBottomLabel.setText(users[4]);
+
+//        LeftTopLabel.setTextFill(Color.BLACK);
+//        LeftBottomLabel.setTextFill(Color.BLACK);
+//        CenterLabel.setTextFill(Color.BLACK);
+//        RightTopLabel.setTextFill(Color.BLACK);
+//        RightBottomLabel.setTextFill(Color.BLACK);
 
     }
 
@@ -155,6 +200,9 @@ public class controlRoom implements Initializable {
     Main m = new Main();
     m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }
+
+
+
     public void sendInvite(ActionEvent event) throws Exception {
         if(event != null){
             InviteAck.setTextFill(Color.GREEN);
@@ -170,13 +218,25 @@ public class controlRoom implements Initializable {
 
     }
 
-
+    @FXML
+    void loadCurrentPlayers(ActionEvent event) throws Exception {
+        populateButtons();
+    }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            CurrentPlayersTab.selectedProperty().addListener((observable, oldValue, newValue) -> {
+//                System.out.println("Je moeder");
+                try {
+                    populateButtons();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
             populateList();
+//            populateButtons();
         } catch (Exception e) {
             e.printStackTrace();
         }

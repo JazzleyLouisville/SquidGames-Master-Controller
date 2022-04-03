@@ -97,12 +97,17 @@ public class waitingController implements Initializable{
                     if(response.invited) {
                         timer.cancel();
                         //  Other stuff;
+                        onInvite();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }, 0, pollingDelay * 1000);
+    }
+
+    void onInvite() {
+        //  ...
     }
 }
 

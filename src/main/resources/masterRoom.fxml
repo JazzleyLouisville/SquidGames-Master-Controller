@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.controlRoom">
+  <tabs>
+      <Tab fx:id="InvitePlayersTab" closable="false" text="All players">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="LstVwPlayers" layoutX="100.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </ListView>
+                  <Button fx:id="inviteBtn" layoutX="427.0" layoutY="86.0" mnemonicParsing="false" onAction="#sendInvite" prefHeight="42.0" prefWidth="75.0" style="-fx-background-color: #ef9cb5;" text="Invite">
+                     <font>
+                        <Font name="Wingdings 2" size="16.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="InviteAck" alignment="CENTER" layoutX="345.0" layoutY="186.0" prefHeight="43.0" prefWidth="239.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="BackBtn" layoutX="502.0" layoutY="312.0" mnemonicParsing="false" onAction="#backScreenChange" prefHeight="31.0" prefWidth="54.0" styleClass="button-transparent" stylesheets="@gui/style.css" textFill="TRANSPARENT">
+                     <graphic>
+                        <ImageView fitHeight="37.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./image/44-440200_arrow-clipart-blue-arrow-left-arrow-clipart.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab fx:id="CurrentPlayersTab" closable="false" text="Current Players">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="CurMidBtn" layoutX="237.0" layoutY="126.0" mnemonicParsing="false" onAction="#removeFromList" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <graphic>
+                        <Label fx:id="CenterLabel" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="CurTopRightBtn" layoutX="338.0" layoutY="66.0" mnemonicParsing="false" onAction="#removeFromList" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <graphic>
+                        <Label fx:id="RightTopLabel" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="CurBotRightBtn" layoutX="338.0" layoutY="186.0" mnemonicParsing="false" onAction="#removeFromList" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <graphic>
+                        <Label fx:id="RightBottomLabel" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="CurTopLeftBtn" layoutX="137.0" layoutY="66.0" mnemonicParsing="false" onAction="#removeFromList" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <graphic>
+                        <Label fx:id="LeftTopLabel" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="CurBotLeftBtn" layoutX="137.0" layoutY="186.0" mnemonicParsing="false" onAction="#removeFromList" prefHeight="120.0" prefWidth="127.0" styleClass="first-button" stylesheets="@../../../../../../../../../Desktop/test.css">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <graphic>
+                        <Label fx:id="LeftBottomLabel" />
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="MsgImg" fitHeight="77.0" fitWidth="65.0" layoutX="523.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@./image/clipart1000915.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="523.0" layoutY="238.0" text="Message" textFill="WHITE" />
+                  <ToggleButton fx:id="KillBtnToggle" layoutX="508.0" layoutY="92.0" mnemonicParsing="false" onAction="#removeFromList" styleClass="button-transparent" stylesheets="@gui/style.css">
+                     <graphic>
+                        <ImageView fx:id="KillImg" fitHeight="62.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./image/x-png-18.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+                  <Label alignment="CENTER" layoutX="533.0" layoutY="118.0" prefHeight="15.0" prefWidth="32.0" text="KILL" textFill="WHITE" />
+                  <Button fx:id="clrBtn" layoutX="451.0" layoutY="2.0" mnemonicParsing="false" onAction="#clearPlayers" prefHeight="25.0" prefWidth="145.0" text="Clear Players" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+    <Tab fx:id="GameSequenceTab" closable="false" text="Game Sequence">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="LstVwGames" layoutX="78.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+                  <Button fx:id="addToSeqBtn" layoutX="378.0" layoutY="86.0" mnemonicParsing="false" onAction="#setSequence" prefHeight="42.0" prefWidth="162.0" style="-fx-background-color: #ef9cb5;" text="Add to sequence">
+                     <font>
+                        <Font name="Wingdings 2" size="16.0" />
+                     </font>
+                  </Button>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="CurrentGameTab" closable="false" text="Game Overview">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="lstViewGames" layoutX="100.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" />
+                  <ToggleButton fx:id="TgPauseBtn" contentDisplay="CENTER" layoutX="412.0" layoutY="140.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="84.0" styleClass="button-transparent" stylesheets="@gui/style.css" textAlignment="CENTER">
+                     <graphic>
+                        <ImageView fitHeight="84.0" fitWidth="109.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@./image/Red Pause Button Png Transparent.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </ToggleButton>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+   <stylesheets>
+      <URL value="@../../../../../../../../../Desktop/test.css" />
+      <URL value="@gui/style.css" />
+   </stylesheets>
+</TabPane>

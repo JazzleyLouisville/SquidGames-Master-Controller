@@ -224,7 +224,7 @@ public class controlRoom implements Initializable {
     @FXML
     void backScreenChange(ActionEvent event) throws IOException {
     Main m = new Main();
-    m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+    m.screenChange("/startScreen.fxml");
     }
 
     @FXML
@@ -321,7 +321,7 @@ public class controlRoom implements Initializable {
         try {
             if(CurrentPlayersTab.selectedProperty().getValue()){
                 Main m = new Main();
-                m.screenChange("src/main/java/softwaredesign/masterRoom.fxml");
+                m.screenChange("/masterRoom.fxml");
             }
             CurrentPlayersTab.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 try {

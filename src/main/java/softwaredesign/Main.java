@@ -17,7 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         curr = primaryStage;
         primaryStage.setResizable(false);
-        URL url = new File("src/main/java/softwaredesign/startScreen.fxml").toURI().toURL();
+        System.out.println();
+        URL url = getClass().getResource("/startScreen.fxml");
         Parent root = FXMLLoader.load(url);
         primaryStage.setTitle("Squid games");
         primaryStage.setScene(new Scene(root));
@@ -25,7 +26,7 @@ public class Main extends Application {
     }
 
     public void screenChange (String fxml) throws IOException{
-        URL url = new File(fxml).toURI().toURL();
+        URL url = getClass().getResource(fxml);
         Parent p = FXMLLoader.load(url);
         curr.getScene().setRoot(p);
     }

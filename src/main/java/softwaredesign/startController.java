@@ -39,12 +39,12 @@ public class startController extends Main {
     }
     public void devLogin(ActionEvent event)throws Exception{
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/devScreen.fxml");
+        m.screenChange("/devScreen.fxml");
     }
 
     public void userLogIn(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/userLogIn.fxml");
+        m.screenChange("/userLogIn.fxml");
     }
 
     public void waitingRoom(ActionEvent event) throws Exception {
@@ -53,13 +53,13 @@ public class startController extends Main {
 
     public void switchToLogIn (ActionEvent event) throws IOException{
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+        m.screenChange("/startScreen.fxml");
     }
 
     @FXML
     void backScreenChange(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+        m.screenChange("/startScreen.fxml");
     }
 
     private void checkMaster() throws IOException, Exception {
@@ -70,7 +70,7 @@ public class startController extends Main {
         if (password.getText().equals(savedPassword)) {
             pLabel.setTextFill(Color.GREEN);
             pLabel.setText("Permission granted");
-            m.screenChange("src/main/java/softwaredesign/masterRoom.fxml");
+            m.screenChange("/masterRoom.fxml");
         } else if (password.getText().isEmpty()){
             pLabel.setText("Enter the password");
         } else {
@@ -87,7 +87,7 @@ public class startController extends Main {
             return;
         }
         sendUsername(receivedUsername);
-        m.screenChange("src/main/java/softwaredesign/waitingRoom.fxml");
+        m.screenChange("/waitingRoom.fxml");
 
     }
     private boolean sendUsername(String username) throws Exception {

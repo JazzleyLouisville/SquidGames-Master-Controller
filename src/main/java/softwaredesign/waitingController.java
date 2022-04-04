@@ -54,7 +54,7 @@ public class waitingController implements Initializable{
     @FXML
     void backScreenChange(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/userLogin.fxml");
+        m.screenChange("/userLogin.fxml");
     }
 
     private void setRotate (Circle c, boolean reverse, int angle, int duration) {
@@ -113,7 +113,7 @@ public class waitingController implements Initializable{
     void onInvite() throws IOException {
 
             Main m = new Main();
-            m.screenChange("src/main/java/softwaredesign/waitingRoomInvite.fxml");
+            m.screenChange("/waitingRoomInvite.fxml");
 
     }
 }

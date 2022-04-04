@@ -54,7 +54,7 @@ public class devController {
     @FXML
     void backScreenChange(ActionEvent event) throws IOException {
         Main m = new Main();
-        m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
+        m.screenChange("/startScreen.fxml");
     }
 
 }

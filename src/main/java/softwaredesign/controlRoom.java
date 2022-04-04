@@ -25,53 +25,79 @@ public class controlRoom implements Initializable {
 
 
     @FXML
-    private Button inviteBtn;
-    @FXML
-    private Button BackBtn;
-
-    @FXML
     private Tab InvitePlayersTab;
 
     @FXML
-    private ListView<String> LstVwPlayers; //was <?>
-
-    private ObservableList<String> names;
+    private ListView<String> LstVwPlayers;
 
     @FXML
-    private ImageView BackArrow;
+    private Button inviteBtn;
 
     @FXML
     private Label InviteAck;
 
     @FXML
+    private Button BackBtn;
+
+    @FXML
     private Tab CurrentPlayersTab;
+
+    @FXML
+    private Button CurMidBtn;
 
     @FXML
     private Label CenterLabel;
 
     @FXML
+    private Button CurTopRightBtn;
+
+    @FXML
     private Label RightTopLabel;
+
+    @FXML
+    private Button CurBotRightBtn;
 
     @FXML
     private Label RightBottomLabel;
 
     @FXML
+    private Button CurTopLeftBtn;
+
+    @FXML
     private Label LeftTopLabel;
+
+    @FXML
+    private Button CurBotLeftBtn;
 
     @FXML
     private Label LeftBottomLabel;
 
     @FXML
-    private ImageView KillImg;
+    private ImageView MsgImg;
 
     @FXML
-    private ImageView MsgImg;
+    private Button KillBtn;
+
+    @FXML
+    private ImageView KillImg;
 
     @FXML
     private Tab GameSequenceTab;
 
     @FXML
+    private ListView<String> LstVwGames;
+
+    @FXML
+    private Button inviteBtn1;
+
+    @FXML
     private Tab CurrentGameTab;
+
+    @FXML
+    private ListView<String> lstViewGames;
+
+    @FXML
+    private ImageView playImg;
 
     private API api;
 
@@ -141,57 +167,54 @@ public class controlRoom implements Initializable {
 
     void populateList() throws Exception{
         String[] users = getAllWaitingUsers();
+        Game[] games = getDeveloperGames();
+        for(Game game:games){
+//            System.out.println(game.gameName+"\n");
+            LstVwGames.getItems().add(game.gameName);
+        }
         if(users.length > 0){
             LstVwPlayers.setItems(FXCollections.observableArrayList(new ArrayList<>(Arrays.asList(users))));
         }
-
-    }
-    void populateButtons() throws Exception{
-        String[] users = getAllInvitedUsers();
-//        int lengting = users.length;
-//        switch (lengting){
-//            case 1:
-//                LeftTopLabel.setText(users[0]);
-//                break;
-//            case 2:
-//                LeftTopLabel.setText(users[0]);
-//                LeftBottomLabel.setText(users[1]);
-//                break;
-//            case 3:
-//                LeftTopLabel.setText(users[0]);
-//                LeftBottomLabel.setText(users[1]);
-//                CenterLabel.setText(users[2]);
-//                break;
-//            case 4:
-//                LeftTopLabel.setText(users[0]);
-//                LeftBottomLabel.setText(users[1]);
-//                CenterLabel.setText(users[2]);
-//                RightTopLabel.setText(users[3]);
-//                break;
-//            case 5:
-//                LeftTopLabel.setText(users[0]);
-//                LeftBottomLabel.setText(users[1]);
-//                CenterLabel.setText(users[2]);
-//                RightTopLabel.setText(users[3]);
-//                RightBottomLabel.setText(users[4]);
-//                break;
-//            default:
-//                break;
-////                LeftTopLabel.setTextFill(Color.BLACK);
-//
+//        if(games.length >0){
+//            LstVwGames.setItems(FXCollections.observableArrayList(new ArrayList<>(List.of(games.toString()))));
 //        }
 
-//        LeftTopLabel.setText(users[0]);
-//        LeftBottomLabel.setText(users[1]);
-//        CenterLabel.setText(users[2]);
-//        RightTopLabel.setText(users[3]);
-//        RightBottomLabel.setText(users[4]);
+    }
 
-//        LeftTopLabel.setTextFill(Color.BLACK);
-//        LeftBottomLabel.setTextFill(Color.BLACK);
-//        CenterLabel.setTextFill(Color.BLACK);
-//        RightTopLabel.setTextFill(Color.BLACK);
-//        RightBottomLabel.setTextFill(Color.BLACK);
+    void populateButtons() throws Exception{
+        String[] users = getAllInvitedUsers();
+        int lengting = users.length;
+        switch (lengting){
+            case 1:
+                LeftTopLabel.setText(users[0]);
+                break;
+            case 2:
+                LeftTopLabel.setText(users[0]);
+                LeftBottomLabel.setText(users[1]);
+                break;
+            case 3:
+                LeftTopLabel.setText(users[0]);
+                LeftBottomLabel.setText(users[1]);
+                CenterLabel.setText(users[2]);
+                break;
+            case 4:
+                LeftTopLabel.setText(users[0]);
+                LeftBottomLabel.setText(users[1]);
+                CenterLabel.setText(users[2]);
+                RightTopLabel.setText(users[3]);
+                break;
+            case 5:
+                LeftTopLabel.setText(users[0]);
+                LeftBottomLabel.setText(users[1]);
+                CenterLabel.setText(users[2]);
+                RightTopLabel.setText(users[3]);
+                RightBottomLabel.setText(users[4]);
+                break;
+            default:
+                break;
+
+        }
+
 
     }
 
@@ -201,7 +224,60 @@ public class controlRoom implements Initializable {
     m.screenChange("src/main/java/softwaredesign/startScreen.fxml");
     }
 
-
+    @FXML
+    void removeFromList(ActionEvent event) throws Exception {
+        //function resets each time you click so we gotta keep track of it in another way
+        String[] users = getAllInvitedUsers();
+        int flag = 0;
+        int killbuttonflag = 0;
+        if(CurTopLeftBtn.isFocused()){
+            flag = 1;
+        }
+        if(CurBotLeftBtn.isFocused()){
+            flag = 2;
+        }
+        if(CurMidBtn.isFocused()){
+            flag = 3;
+        }
+        if(CurTopRightBtn.isFocused()){
+            System.out.println("in curtopright flag set to 4");
+            flag = 4;
+        }
+        if(CurBotRightBtn.isFocused()){
+            flag = 5;
+        }
+        if(KillBtn.isFocused()){
+            System.out.println("killbtn is focused");
+            killbuttonflag = 1;
+        }
+        if(killbuttonflag != 0 && flag !=0){
+            System.out.println("grape success");
+        }
+        if(KillBtn.isFocused() && flag > 0){
+//            System.out.println("killbtn focused");
+            switch (flag){
+                case 1:
+                    deletePlayer(users[0]);
+                    System.out.println("player curtopleft has been deleted");
+                    break;
+                case 2:
+                    deletePlayer(users[1]);
+                    break;
+                case 3:
+                    deletePlayer(users[2]);
+                    break;
+                case 4:
+                    deletePlayer(users[3]);
+                    System.out.println("player curtopright has been deleted");
+                    break;
+                case 5:
+                    deletePlayer(users[4]);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
     public void sendInvite(ActionEvent event) throws Exception {
         if(event != null){
@@ -215,12 +291,23 @@ public class controlRoom implements Initializable {
 
         String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
         inviteUsers(user);
+//        inviteUsers(LstVwGames.getSelectionModel().getSelectedItems().toArray(new String[0]));
 
     }
 
     @FXML
-    void loadCurrentPlayers(ActionEvent event) throws Exception {
-        populateButtons();
+    void setSequence(ActionEvent event) throws Exception{
+
+        if(event != null){
+            InviteAck.setTextFill(Color.GREEN);
+            InviteAck.setText(LstVwGames.getSelectionModel().getSelectedItem());
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+            pause.setOnFinished(f-> InviteAck.setText(null));
+            pause.play();
+        }
+//        String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
+//        inviteUsers(user);
+        //probeer inviteUsers(LstVwPlayers.getSelectionModel().getSelectedItem());
     }
 
 
@@ -228,7 +315,6 @@ public class controlRoom implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             CurrentPlayersTab.selectedProperty().addListener((observable, oldValue, newValue) -> {
-//                System.out.println("Je moeder");
                 try {
                     populateButtons();
                 } catch (Exception e) {
@@ -236,7 +322,6 @@ public class controlRoom implements Initializable {
                 }
             });
             populateList();
-//            populateButtons();
         } catch (Exception e) {
             e.printStackTrace();
         }

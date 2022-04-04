@@ -33,6 +33,11 @@
             <Font size="22.0" />
          </font>
       </Label>
+      <Label fx:id="invitedLbl" alignment="CENTER" layoutX="63.0" layoutY="159.0" prefHeight="178.0" prefWidth="492.0" textAlignment="CENTER">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
       <Button fx:id="BackBtn" layoutX="512.0" layoutY="322.0" mnemonicParsing="false" onAction="#backScreenChange" prefHeight="31.0" prefWidth="54.0" styleClass="button-transparent" stylesheets="@gui/style.css" textFill="TRANSPARENT">
          <graphic>
             <ImageView fitHeight="37.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">

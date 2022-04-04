@@ -1,5 +1,6 @@
 package softwaredesign;
 
+import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.fxml.Initializable;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -33,6 +35,9 @@ public class waitingController implements Initializable{
 
     @FXML
     private Button BackBtn;
+
+    @FXML
+    private Label invitedLbl;
 
     private API api;
     final int pollingDelay = 5; //  Seconds
@@ -107,9 +112,16 @@ public class waitingController implements Initializable{
 
     void onInvite() {
         //  ...
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Alert!");
-        alert.setContentText("You have been invited to play a game of squid");
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Alert!");
+//        alert.setContentText("You have been invited to play a game of squid");
+
+            invitedLbl.setTextFill(Color.GREEN);
+            invitedLbl.setText("You have been invited to play a game of squid");
+            PauseTransition pause = new PauseTransition(Duration.seconds(1));
+//            pause.setOnFinished(f-> InviteAck.setText(null));
+            pause.play();
+
 //        Optional<ButtonType> result = alert.showAndWait();
 
     }

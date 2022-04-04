@@ -16,6 +16,7 @@ public class NetworkingConstants {
     public final static String GET_DEV_GAMES_PATH = "all_games" ;
     public final static String DELETE_PLAYER_PATH = "player" ;
     public final static String GET_INVITED_USERS_PATH = "invited_users" ;
+    public final static String DELETE_SELECTED_PATH = "clear_selected";
     //  Error responses
     public final static String NO_URL = "No URL provided.";
 

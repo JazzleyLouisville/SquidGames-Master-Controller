@@ -275,6 +275,12 @@ public class controlRoom implements Initializable {
 
     }
 
+
+    void deleteSelected() throws Exception {
+        GeneralResponse res = api.delete(NetworkingConstants.DELETE_SELECTED_PATH, new GeneralResponse());
+        System.out.println(res.message);
+    }
+
     public void sendInvite(ActionEvent event) throws Exception {
         if(event != null){
             InviteAck.setTextFill(Color.GREEN);

@@ -16,11 +16,6 @@
             <Image url="@../image/k3mijsmj0wq71.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="81.0" fitWidth="475.0" layoutX="71.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/waiting-on-master.png" />
-         </image>
-      </ImageView>
       <Circle fx:id="circle" fill="#1f93ff00" layoutX="196.0" layoutY="188.0" radius="30.0" stroke="#4bcbe8" strokeType="INSIDE" strokeWidth="5.0" style="-fx-stroke-dash-array: 15;" />
       <Rectangle fx:id="square" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="60.0" layoutX="286.0" layoutY="158.0" stroke="#18eb4d" strokeType="INSIDE" strokeWidth="5.0" width="60.0" />
       <ImageView fx:id="triangle" fitHeight="95.0" fitWidth="74.0" layoutX="402.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
@@ -33,9 +28,9 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Label fx:id="invitedLbl" alignment="CENTER" layoutX="63.0" layoutY="159.0" prefHeight="178.0" prefWidth="492.0" textAlignment="CENTER">
+      <Label fx:id="invitedLbl" alignment="CENTER" layoutX="70.0" layoutY="40.0" prefHeight="178.0" prefWidth="492.0" text="You have been invited to a game of squid" textAlignment="CENTER">
          <font>
-            <Font size="47.0" />
+            <Font size="21.0" />
          </font>
       </Label>
       <Button fx:id="BackBtn" layoutX="512.0" layoutY="322.0" mnemonicParsing="false" onAction="#backScreenChange" prefHeight="31.0" prefWidth="54.0" styleClass="button-transparent" stylesheets="@gui/style.css" textFill="TRANSPARENT">

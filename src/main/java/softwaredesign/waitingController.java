@@ -111,20 +111,9 @@ public class waitingController implements Initializable{
     }
 
     void onInvite() throws IOException {
-        //  ...
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Alert!");
-//        alert.setContentText("You have been invited to play a game of squid");
 
-//            Main m = new Main();
-//            m.screenChange("src/main/java/softwaredesign/masterRoom.fxml");
-            invitedLbl.setTextFill(Color.GREEN);
-            invitedLbl.setText("You have been invited to play a game of squid");
-            PauseTransition pause = new PauseTransition(Duration.seconds(1));
-//            pause.setOnFinished(f-> InviteAck.setText(null));
-            pause.play();
-
-//        Optional<ButtonType> result = alert.showAndWait();
+            Main m = new Main();
+            m.screenChange("src/main/java/softwaredesign/waitingRoomInvite.fxml");
 
     }
 }

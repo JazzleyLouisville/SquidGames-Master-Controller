@@ -25,6 +25,9 @@ public class controlRoom implements Initializable {
 
 
     @FXML
+    private Button clrBtn;
+
+    @FXML
     private Tab InvitePlayersTab;
 
     @FXML
@@ -226,7 +229,6 @@ public class controlRoom implements Initializable {
 
     @FXML
     void removeFromList(ActionEvent event) throws Exception {
-        //function resets each time you click so we gotta keep track of it in another way
         String[] users = getAllInvitedUsers();
         int flag = 0;
         if(KillBtnToggle.isSelected()){
@@ -287,7 +289,6 @@ public class controlRoom implements Initializable {
 
         String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
         inviteUsers(user);
-//        inviteUsers(LstVwGames.getSelectionModel().getSelectedItems().toArray(new String[0]));
 
     }
 
@@ -301,9 +302,11 @@ public class controlRoom implements Initializable {
             pause.setOnFinished(f-> InviteAck.setText(null));
             pause.play();
         }
-//        String[]user = {LstVwPlayers.getSelectionModel().getSelectedItem()};
-//        inviteUsers(user);
-        //probeer inviteUsers(LstVwPlayers.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    void clearPlayers(ActionEvent event) {
+
     }
 
 

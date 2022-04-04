@@ -76,7 +76,7 @@ public class controlRoom implements Initializable {
     private ImageView MsgImg;
 
     @FXML
-    private Button KillBtn;
+    private ToggleButton KillBtnToggle;
 
     @FXML
     private ImageView KillImg;
@@ -229,54 +229,50 @@ public class controlRoom implements Initializable {
         //function resets each time you click so we gotta keep track of it in another way
         String[] users = getAllInvitedUsers();
         int flag = 0;
-        int killbuttonflag = 0;
-        if(CurTopLeftBtn.isFocused()){
-            flag = 1;
+        if(KillBtnToggle.isSelected()){
+            if(CurTopLeftBtn.isFocused()){
+                flag = 1;
+            }
+            if(CurBotLeftBtn.isFocused()){
+                flag = 2;
+            }
+            if(CurMidBtn.isFocused()){
+                flag = 3;
+            }
+            if(CurTopRightBtn.isFocused()){
+                System.out.println("in curtopright flag set to 4");
+                flag = 4;
+            }
+            if(CurBotRightBtn.isFocused()){
+                flag = 5;
+            }
         }
-        if(CurBotLeftBtn.isFocused()){
-            flag = 2;
-        }
-        if(CurMidBtn.isFocused()){
-            flag = 3;
-        }
-        if(CurTopRightBtn.isFocused()){
-            System.out.println("in curtopright flag set to 4");
-            flag = 4;
-        }
-        if(CurBotRightBtn.isFocused()){
-            flag = 5;
-        }
-        if(KillBtn.isFocused()){
-            System.out.println("killbtn is focused");
-            killbuttonflag = 1;
-        }
-        if(killbuttonflag != 0 && flag !=0){
-            System.out.println("grape success");
-        }
-        if(KillBtn.isFocused() && flag > 0){
-//            System.out.println("killbtn focused");
+        System.out.println(users.length);
+        if(KillBtnToggle.isSelected() && flag > 0 && users.length > 0){
+            System.out.println("killbtn focused && flag = " + flag+"\n");
             switch (flag){
                 case 1:
-                    deletePlayer(users[0]);
+//                    deletePlayer(users[0]);
                     System.out.println("player curtopleft has been deleted");
                     break;
                 case 2:
-                    deletePlayer(users[1]);
+//                    deletePlayer(users[1]);
                     break;
                 case 3:
-                    deletePlayer(users[2]);
+//                    deletePlayer(users[2]);
                     break;
                 case 4:
-                    deletePlayer(users[3]);
+//                    deletePlayer(users[3]);
                     System.out.println("player curtopright has been deleted");
                     break;
                 case 5:
-                    deletePlayer(users[4]);
+//                    deletePlayer(users[4]);
                     break;
                 default:
                     break;
             }
         }
+
     }
 
     public void sendInvite(ActionEvent event) throws Exception {
@@ -314,8 +310,13 @@ public class controlRoom implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            if(CurrentPlayersTab.selectedProperty().getValue()){
+                Main m = new Main();
+                m.screenChange("src/main/java/softwaredesign/masterRoom.fxml");
+            }
             CurrentPlayersTab.selectedProperty().addListener((observable, oldValue, newValue) -> {
                 try {
+
                     populateButtons();
                 } catch (Exception e) {
                     e.printStackTrace();

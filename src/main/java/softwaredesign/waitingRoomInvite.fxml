@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="softwaredesign.waitingController">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/k3mijsmj0wq71.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="81.0" fitWidth="475.0" layoutX="71.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/waiting-on-master.png" />
+         </image>
+      </ImageView>
+      <Circle fx:id="circle" fill="#1f93ff00" layoutX="196.0" layoutY="188.0" radius="30.0" stroke="#4bcbe8" strokeType="INSIDE" strokeWidth="5.0" style="-fx-stroke-dash-array: 15;" />
+      <Rectangle fx:id="square" arcHeight="2.0" arcWidth="2.0" fill="#1f93ff00" height="60.0" layoutX="286.0" layoutY="158.0" stroke="#18eb4d" strokeType="INSIDE" strokeWidth="5.0" width="60.0" />
+      <ImageView fx:id="triangle" fitHeight="95.0" fitWidth="74.0" layoutX="402.0" layoutY="159.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/triangle.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="label" layoutX="283.0" layoutY="316.0" textFill="#2ec1f2">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="invitedLbl" alignment="CENTER" layoutX="63.0" layoutY="159.0" prefHeight="178.0" prefWidth="492.0" textAlignment="CENTER">
+         <font>
+            <Font size="47.0" />
+         </font>
+      </Label>
+      <Button fx:id="BackBtn" layoutX="512.0" layoutY="322.0" mnemonicParsing="false" onAction="#backScreenChange" prefHeight="31.0" prefWidth="54.0" styleClass="button-transparent" stylesheets="@gui/style.css" textFill="TRANSPARENT">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/44-440200_arrow-clipart-blue-arrow-left-arrow-clipart.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
